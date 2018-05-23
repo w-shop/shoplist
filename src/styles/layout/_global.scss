@@ -1,0 +1,96 @@
+.container {
+    width: 100%;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.main {
+    background: $color-gray-light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+.app {
+    max-width: 320px;
+    height: 640px;
+    overflow: auto;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid $color-gray-light;
+    background: $color-gray-light;
+    position: relative;
+}
+
+.header {
+    background: $color-blue;
+    color: $color-white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    &__add-product {
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+            color: $color-black;
+            width: 100%;
+            margin-right: 10px;
+        }
+
+        button {
+            background: none;
+            color: $color-white;
+            border: none;
+            outline: 0;
+            font-size: 30px;
+            line-height: 1;
+            display: block;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}
+
+
+.ico-btn {
+    $btn: &;
+    @include buttonReset();
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+
+    svg {
+        display: block;
+        fill: $color-gray-blue;
+    }
+
+
+    &--red svg {
+        fill: $color-red;
+    }
+
+    &--green svg {
+        fill: $color-green;
+    }
+
+    &--white svg {
+        fill: $color-white;
+    }
+}

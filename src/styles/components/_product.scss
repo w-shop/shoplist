@@ -1,0 +1,32 @@
+.product {
+    background: $color-white;
+    padding: 10px;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__name {
+        width: 100%;
+        text-align: left;
+        flex-shrink: 1;
+        //text-overflow: ellipsis;
+        //white-space: nowrap;
+        //overflow: hidden;
+    }
+
+    &__mark {
+        margin-right: 5px;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+    }
+
+    &__action {
+        margin-left: 5px;
+    }
+}
