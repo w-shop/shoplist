@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 Encore
     .setOutputPath('dist/')
-    .setPublicPath('/dist/')
+    .setPublicPath('/')
     .addEntry('app', './src/js/app.js')
     .enableSassLoader()
     .enableSourceMaps(!Encore.isProduction())
@@ -15,23 +15,26 @@ Encore
     .addLoader({
         test: /\.(png|jpg|jpeg|gif|ico|svg|webp)$/,
         loader: 'file-loader',
-        exclude: [/svg\/sprite-main\/.+\.svg$/],
+        exclude: [/svg\/sprite\/.+\.svg$/],
         options: {
             name: 'images/[name].[hash:8].[ext]',
         }
     })
     .addLoader({
-        test: /svg\/sprite-main\/.+\.svg$/,
+        test: /svg\/sprite\/.+\.svg$/,
         loader: 'svg-sprite-loader',
         options: {
             extract: true,
-            spriteFilename: 'sprite.svg'
+            spriteFilename: 'images/sprite.svg'
         }
     })
     .addPlugin(new SpriteLoaderPlugin({
         plainSprite: true
     }))
-    .addPlugin(new HtmlWebpackPlugin())
+    .addPlugin(new HtmlWebpackPlugin({
+        title: 'Shop List',
+        template: 'src/templates/index.html'
+    }))
 ;
 
 module.exports = Encore.getWebpackConfig();
