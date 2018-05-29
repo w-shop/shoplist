@@ -8,6 +8,7 @@
   "license": "MIT",
   "devDependencies": {
     "@symfony/webpack-encore": "^0.20.1",
+    "babel-preset-stage-0": "^6.24.1",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.10",
     "node-sass": "^4.9.0",
@@ -15,7 +16,9 @@
     "svg-sprite-loader": "^3.7.3",
     "vue": "^2.5.16",
     "vue-loader": "^14.2.2",
-    "vue-template-compiler": "^2.5.16"
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "vuex": "^3.0.1"
   },
   "scripts": {
     "watch": "./node_modules/.bin/encore dev --watch",

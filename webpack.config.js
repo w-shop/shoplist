@@ -11,6 +11,9 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableVueLoader()
     .autoProvidejQuery()
+    .configureBabel(function (config) {
+        config.presets.push('stage-0')
+    })
     .disableImagesLoader()
     .addLoader({
         test: /\.(png|jpg|jpeg|gif|ico|svg|webp)$/,

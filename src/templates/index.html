@@ -4,6 +4,27 @@
         <title><%= htmlWebpackPlugin.options.title %></title>
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app" class="app" style="padding-top: 97px;">
+            <header class="header">
+                <div class="header__add-product"><input type="text" id="add" placeholder="Dodaj produkt" class="form-control">
+                    <button disabled="disabled" class="ico-btn ico-btn--white">
+                        <icon sprite-id="add-to-list" />
+                    </button>
+                </div>
+                <div class="tabs">
+                    <router-link to="/list" tag="div" class="tabs__tab">Lista <span>(2/3)</span></router-link>
+                    <router-link to="/products" tag="div" class="tabs__tab">Produkty (3)</router-link>
+                </div>
+            </header>
+            <div class="main">
+                <div class="container">
+                    <div class="lists">
+                        <div class="lists__wrapper">
+                            <router-view />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
