@@ -4,10 +4,7 @@
             <list-box>
                 <template slot="header">Produkty (3)</template>
                 <div class="list__item" v-for="product in products">
-                    <product :product="product" :in-list="product.list !== null"
-                        @remove-from-list="removeFromList(product)"
-                        @add-to-list="addToList(product)"
-                        />
+                    <product :product="product" />
                 </div>
             </list-box>
         </div>
@@ -15,7 +12,7 @@
 </template>
 
 <script>
-    import { mapState, mapMutations } from 'vuex';
+    import { mapState } from 'vuex';
 
     import Product from './Product';
 
@@ -25,9 +22,6 @@
         },
         computed: {
             ...mapState(['products'])
-        },
-        methods: {
-            ...mapMutations(['addToList', 'removeFromList'])
         }
     }
 </script>
