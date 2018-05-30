@@ -2,7 +2,7 @@
     <div class="lists__item">
         <div class="list">
             <list-box>
-                <template slot="header">Produkty (3)</template>
+                <template slot="header">Produkty ({{ products.length }})</template>
                 <div class="list__item" v-for="product in products">
                     <product :product="product" />
                 </div>

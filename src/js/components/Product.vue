@@ -1,6 +1,9 @@
 <template>
     <div class="product">
         <div class="product__wrapper">
+            <button class="product__mark btn" v-if="selectable" @click="$emit('select', product)">
+                <icon :sprite-id="selected ? 'checkbox-checked' : 'checkbox-empty'" />
+            </button>
             <div class="product__name">{{ product.name }}</div>
             <div class="product__actions">
                 <button class="ico-btn ico-btn--red product__action" v-if="product.list !== null" @click="removeFromList(product)">
@@ -21,7 +24,7 @@
     import { mapMutations } from 'vuex';
 
     export default {
-        props: ['product'],
+        props: ['product', 'selectable', 'selected'],
         methods: {
             edit() {
                 // TODO

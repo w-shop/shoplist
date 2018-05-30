@@ -12,8 +12,8 @@
                     </button>
                 </div>
                 <div class="tabs">
-                    <router-link to="/list" tag="div" class="tabs__tab">Lista <span>(2/3)</span></router-link>
-                    <router-link to="/products" tag="div" class="tabs__tab">Produkty (3)</router-link>
+                    <router-link to="/list" tag="div" class="tabs__tab">Lista <span>({{ listProducts.length }}/{{ totalListCount }})</span></router-link>
+                    <router-link to="/products" tag="div" class="tabs__tab">Produkty ({{ products.length }})</router-link>
                 </div>
             </header>
             <div class="main">

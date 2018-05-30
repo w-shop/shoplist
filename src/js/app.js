@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { mapState, mapGetters } from 'vuex';
 
 import '../styles/main.scss';
 import router from './router';
@@ -13,5 +14,15 @@ Vue.component('list-box', ListBox);
 new Vue({
     router,
     store,
-    el: '#app'
+    el: '#app',
+    created() {
+        this.$router.replace('/list');
+    },
+    computed: {
+        ...mapState(['products']),
+        ...mapGetters(['listProducts', 'basketProducts']),
+        totalListCount() {
+            return this.listProducts.length + this.basketProducts.length;
+        }
+    }
 });
