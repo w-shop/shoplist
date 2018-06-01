@@ -4,7 +4,7 @@
             <list-box>
                 <template slot="header">Lista ({{ listProducts.length }})</template>
                 <div class="list__item" v-for="product in listProducts">
-                    <product :product="product" @select="product => $store.commit('addToBasket', product)" :selectable="true" :selected="false" />
+                    <product :product="product" @select="product => $store.dispatch('moveToBasket', product)" :selectable="true" :selected="false" />
                 </div>
             </list-box>
         </div>
@@ -12,7 +12,7 @@
             <list-box>
                 <template slot="header">Koszyk ({{ basketProducts.length }})</template>
                 <div class="list__item" v-for="product in basketProducts">
-                    <product :product="product" @select="product => $store.commit('removeFromBasket', product)" :selectable="true" :selected="true" />
+                    <product :product="product" @select="product => $store.dispatch('moveToList', product)" :selectable="true" :selected="true" />
                 </div>
             </list-box>
         </div>

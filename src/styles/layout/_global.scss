@@ -29,6 +29,10 @@ h6 {
     position: relative;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 .header {
     background: $color-blue;
     color: $color-white;
@@ -92,5 +96,19 @@ h6 {
 
     &--white svg {
         fill: $color-white;
+    }
+}
+
+.message {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+
+    &--error {
+        background-color: #900;
+        color: #f99;
     }
 }

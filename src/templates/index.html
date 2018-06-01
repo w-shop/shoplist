@@ -4,10 +4,11 @@
         <title><%= htmlWebpackPlugin.options.title %></title>
     </head>
     <body>
-        <div id="app" class="app" style="padding-top: 97px;">
+        <div id="app" class="app" style="padding-top: 97px;" v-cloak>
             <header class="header">
-                <div class="header__add-product"><input type="text" id="add" placeholder="Dodaj produkt" class="form-control">
-                    <button disabled="disabled" class="ico-btn ico-btn--white">
+                <div class="header__add-product">
+                    <input v-model="newProduct" type="text" id="add" placeholder="Dodaj produkt" class="form-control" @keypress.enter="addProduct" />
+                    <button disabled="disabled" class="ico-btn ico-btn--white" @click.prevent="addProduct">
                         <icon sprite-id="add-to-list" />
                     </button>
                 </div>
@@ -25,6 +26,7 @@
                     </div>
                 </div>
             </div>
+            <div class="message message--error" v-if="errorMessage">{{ errorMessage }}</div>
         </div>
     </body>
 </html>

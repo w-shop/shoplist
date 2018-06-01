@@ -9,7 +9,7 @@
                 <button class="ico-btn ico-btn--red product__action" v-if="product.list !== null" @click="removeFromList(product)">
                     <icon sprite-id="remove"/>
                 </button>
-                <button class="ico-btn product__action" v-if="product.list === null" @click="addToList(product)">
+                <button class="ico-btn product__action" v-if="product.list === null" @click="moveToList(product)">
                     <icon sprite-id="add"/>
                 </button>
                 <button class="ico-btn product__action" @click="edit">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+    import { mapActions } from 'vuex';
 
     export default {
         props: ['product', 'selectable', 'selected'],
@@ -29,7 +29,7 @@
             edit() {
                 // TODO
             },
-            ...mapMutations(['addToList', 'removeFromList'])
+            ...mapActions(['moveToList', 'removeFromList'])
         }
     }
 </script>
