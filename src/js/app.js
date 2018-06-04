@@ -7,15 +7,21 @@ import store from './store';
 
 import Icon from './components/Icon';
 import ListBox from './components/ListBox';
+import Modal from './components/Modal';
+import EditProduct from './components/EditProduct';
 
 Vue.component('icon', Icon);
 Vue.component('list-box', ListBox);
+Vue.component('modal', Modal);
 
 store.then((store) => {
     new Vue({
         router,
         store,
         el: '#app',
+        components: {
+            'edit-product': EditProduct
+        },
         data() {
             return {
                 newProduct: null,
@@ -26,7 +32,7 @@ store.then((store) => {
             this.$router.replace('/list');
         },
         computed: {
-            ...mapState(['products', 'errorMessage']),
+            ...mapState(['products', 'errorMessage', 'editedProduct']),
             ...mapGetters(['listProducts', 'basketProducts']),
             totalListCount() {
                 return this.listProducts.length + this.basketProducts.length;

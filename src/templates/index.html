@@ -27,6 +27,7 @@
                 </div>
             </div>
             <div class="message message--error" v-if="errorMessage">{{ errorMessage }}</div>
+            <edit-product v-if="!!editedProduct" :product="editedProduct" />
         </div>
     </body>
 </html>

@@ -6,7 +6,7 @@
             </button>
             <div class="product__name">{{ product.name }}</div>
             <div class="product__actions">
-                <button class="ico-btn ico-btn--red product__action" v-if="product.list !== null" @click="removeFromList(product)">
+                <button class="ico-btn ico-btn--red product__action" v-if="product.list !== null" @click="removeFromList(product).then()">
                     <icon sprite-id="remove"/>
                 </button>
                 <button class="ico-btn product__action" v-if="product.list === null" @click="moveToList(product)">
@@ -27,7 +27,7 @@
         props: ['product', 'selectable', 'selected'],
         methods: {
             edit() {
-                // TODO
+                this.$store.commit('editProduct', this.product);
             },
             ...mapActions(['moveToList', 'removeFromList'])
         }

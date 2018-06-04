@@ -24,7 +24,7 @@ export default {
         return new Promise(resolve => {
             products = JSON.parse(window.localStorage.getItem('products') || '[]');
             // Simulating API, objects in API are not the same objects in store
-            resolve(Object.assign([], products));
+            resolve(JSON.parse(JSON.stringify(products)));
         });
     },
     setProductList(product, list) {
@@ -45,6 +45,31 @@ export default {
         }
 
         products.push(Object.assign({}, product));
+
+        return save();
+    },
+    updateProduct(product, name) {
+        if (!name) {
+            return this.removeProduct(product).then(() => ({removed: true}));
+        }
+
+        const apiProduct = findProduct(product.name);
+        if (!apiProduct) {
+            return Promise.reject(new Error('Product "' + name + '" not found.'));
+        }
+
+        apiProduct.name = name;
+
+        return save().then(() => ({removed: false}));
+    },
+    removeProduct(product) {
+        const apiProduct = findProduct(product.name);
+
+        if (!apiProduct) {
+            return Promise.reject(new Error('Product "' + name + '" not found.'));
+        }
+
+        products.splice(products.indexOf(apiProduct), 1);
 
         return save();
     },

@@ -17,7 +17,8 @@ export default ProductApi.load().then((products) => {
     return new Vuex.Store({
         state: {
             products: products,
-            errorMessage: null
+            errorMessage: null,
+            editedProduct: null
         },
         getters: {
             listProducts: (state) => {
@@ -36,6 +37,12 @@ export default ProductApi.load().then((products) => {
             },
             setError(state, message) {
                 state.errorMessage = message;
+            },
+            editProduct(state, product) {
+                state.editedProduct = product;
+            },
+            removeProduct(state, product) {
+                state.products.splice(state.products.indexOf(product), 1);
             }
         },
         actions: {
@@ -67,6 +74,15 @@ export default ProductApi.load().then((products) => {
                     commit('setList', {product, list: 'basket'});
                 }).catch((reason) => {
                     timedErrorMessage(commit, reason.message);
+                });
+            },
+            updateProduct({commit}, {product, name}) {
+                return ProductApi.updateProduct(product, name).then(({removed}) => {
+                    if (removed) {
+                        commit('removeProduct', product);
+                        return;
+                    }
+                    product.name = name;
                 });
             }
         }
